@@ -16,4 +16,4 @@ DevOp
 .. [SphinxRestructuredText] `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`__
 .. [SphinxDocument] `Documents <https://www.sphinx-doc.org/en/master/contents.html>`__
 .. [SphinxTheme] `Themes <http://sphinx-themes.org/>`__
-.. [SphinxRTDTheme] `sphinx-rtd-theme <https://sphinx-rtd-theme.readthedocs.io/en/stable/>`
+.. [SphinxRTDTheme] `sphinx-rtd-theme <https://sphinx-rtd-theme.readthedocs.io/en/stable/>`__
