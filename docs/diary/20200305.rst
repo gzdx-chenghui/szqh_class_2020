@@ -62,7 +62,7 @@
 
    ::
 
-        |-- config.py
+        |-- conf.py
         |-- index.rst
         |-- Makefile
         |-- make.bat
@@ -71,7 +71,7 @@
         |-- _templates
 
    
-   其中　``config.py`` 是设置文件， ``index.rst``　是头文件， ``_build`` 是一个文件夹，　
+   其中　``conf.py`` 是设置文件， ``index.rst``　是头文件， ``_build`` 是一个文件夹，　
    ``Makefile`` 通过 ``make``　指令生成的 ``html``　文件存放在这里。 ``_static``　与 ``_templates``
    也是文件夹，分别用于存放渲染和结构指引性文件。
 

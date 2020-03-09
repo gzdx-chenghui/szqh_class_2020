@@ -1,4 +1,6 @@
 # https://github.com/github/gitignore/blob/master/Python.gitignore
+_build/*
+*.old
 __pycache__/
 *.py[cod]
 *$py.class
