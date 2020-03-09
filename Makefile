@@ -25,5 +25,5 @@ gh-pages:
 	rm -rf /tmp/gh-pages
 	cp -r $(BUILDDIR)/html /tmp/gh-pages
 	git checkout gh-pages
-	rm -rf * && cp -r /tmp/gh-pages/* . && git add . && git commit -m "updated gh-pages" && git push && gi checkout master
+	rm -rf * && cp -r /tmp/gh-pages/* . 
 	
