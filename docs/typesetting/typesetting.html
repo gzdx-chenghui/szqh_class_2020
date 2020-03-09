@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>文本排版系统 &mdash; 量化投资学习项目 0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Python" href="../books/python/python.html" />
+    <link rel="prev" title="DevOp" href="../devop/devop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> 量化投资学习项目
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">目录:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">清华大学深圳研究生院2020量化投资学习项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devop/devop.html">DevOp</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">文本排版系统</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">设置</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#theme">渲染（theme）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">中文字体</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">基础语法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#directives">Directives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">文件加载</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#latex">Latex</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#markdown">Markdown</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../books/python/python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../books/ml/ml.html">统计与机器学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/projects.html">项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diary/diary.html">日记</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">参考文献</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">量化投资学习项目</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>文本排版系统</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/typesetting/typesetting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="typesetting-section-label">
+<span id="id1"></span><h1>文本排版系统<a class="headerlink" href="#typesetting-section-label" title="永久链接至标题">¶</a></h1>
+<div class="section" id="sphinx">
+<span id="sphinx-subsection-label"></span><h2>Sphinx<a class="headerlink" href="#sphinx" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h3>设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<div class="section" id="theme">
+<h4>渲染（theme）<a class="headerlink" href="#theme" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id3">
+<h4>中文字体<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>基础语法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="directives">
+<h4>Directives<a class="headerlink" href="#directives" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id5">
+<h4>文件加载<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">mdinclude</span></code></p>
+</div>
+</div>
+</div>
+<div class="section" id="latex">
+<span id="latex-subsection-label"></span><h2>Latex<a class="headerlink" href="#latex" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="markdown">
+<span id="markdown-subsection-label"></span><h2>Markdown<a class="headerlink" href="#markdown" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../books/python/python.html" class="btn btn-neutral float-right" title="Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../devop/devop.html" class="btn btn-neutral float-left" title="DevOp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, 张志峰
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
