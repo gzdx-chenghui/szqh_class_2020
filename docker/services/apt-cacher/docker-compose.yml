@@ -1,0 +1,25 @@
+version: '3'
+
+services: 
+    apt_cacher_ng:
+        build:
+            context: ./
+        image: apt_cacher_ng:szqh
+        container_name: apt_cacher_ng
+        networks:
+            gateway:
+                aliases: 
+                    - apt
+        ports: 
+            - "3142:3142"
+        volumes: 
+            - packages:/var/cache/apt_cacher_ng
+        restart: always
+
+volumes:
+    packages:
+
+networks: 
+    gateway:
+        driver: bridge
+

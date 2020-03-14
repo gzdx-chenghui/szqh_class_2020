@@ -1,0 +1,35 @@
+@startuml
+title Command Pattern
+skinparam monochrome true
+skinparam noteFontSize 9
+
+class Invoker {
+    +Command: CommandBase
+    +ExecuteCommand()
+}
+abstract class CommandBase {
+    #receiver: Receiver
+    +Execute()
+    +Actor(receiver: Receiver)
+}
+class ConcreteCommand {
+    +Parameter
+    +Execute()
+}
+class Receiver {
+    +Action()
+}
+class Client {}
+
+note left of Client: The class is a consumer of \n the classes of the \n command design pattern.
+note bottom of Receiver: Receiver objects contain \n the methods that are executed \n when one or more commands \n are invoked. This allows the actual \n functionality to be held separately \n to the Command definitions.
+note right of CommandBase: This abstract class is the \n base class for all command \n objects. It defines a protected \n field that holds the Receiver \n that is linked to the command, \n which is usually set via a \n constructor. The class also \n defines an abstract method \n that is used by the Invoker \n to execute commands.
+note right of ConcreteCommand: Concrete command classes are \n subclass of CommandBase. \n In addition to implementing the \n Execute method, they contain \n all of the information that is \n requied to correctly perform the \n action using the linked Receiver \n object.
+note left of Invoker:  The invoker object initiates \n the execution of commands. \n The invoker could be controlled \n by the Client object, However, \n the invoker may be disconnected \n from the client.
+
+Invoker o- CommandBase
+CommandBase <|-- ConcreteCommand
+Receiver <- ConcreteCommand
+Client -> Receiver
+Client .> ConcreteCommand
+@enduml

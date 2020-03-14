@@ -1,0 +1,76 @@
+2020.3.9 Sphinx Docker 工具
++++++++++++++++++++++++++++++++++++
+
+sphinx:tikz
+***************
+
+在 ``docker/tools/sphinx`` 下创建 ``Dockerfile``　，
+
+.. code-block:: Dockerfile
+
+    FROM sphinxdoc/sphinx-latexpdf
+
+    WORKDIR /docs
+    ADD requirements.txt /docs
+    RUN pip3 install -r requirements.txt
+
+其中　``requiresment.txt`` 为，
+
+.. code-block:: text
+
+    sphinx-rtd-theme
+    sphinxcontrib-tikz
+    sphinxcontrib-plantuml
+    recommonmark
+
+用这两个文件来创建一个 ``sphinx`` 镜像，取名为 ``sphinx::tikz`` ,
+
+.. code-block:: shell
+
+    docker build -t sphinx:tikz .
+
+
+有了这个镜像，我们需要修改 ``Makefile``　文件：
+
+.. code-block:: makefile
+
+    # Minimal makefile for Sphinx documentation
+    #
+
+    # You can set these variables from the command line, and also
+    # from the environment for the first two.
+    SPHINXOPTS    ?=
+    SPHINXBUILD   ?= sphinx-build
+    SOURCEDIR     = $PWD
+    BUILDDIR      = _build
+    DOCKERIMAGE	  = sphinx:tikz
+    DOCKERSRC     =/docs
+    # Put it first so that "make" without argument is like "make help".
+    help:
+        @$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+    .PHONY: help Makefile
+
+    # Catch-all target: route all unknown targets to Sphinx using the new
+    # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+    %: Makefile
+        @$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+    .PHONY: local-pages
+    .ONESHELL:
+    local-pages:
+        @docker run --rm -v ${PWD}:${DOCKERSRC} ${DOCKERIMAGE} ${SPHINXBUILD} -M html ${DOCKERSRC} ${BUILDDIR}
+
+    .PHONY: gh-pages
+    .ONESHELL:
+    gh-pages:
+        @rm -rf /tmp/gh-pages
+        @cp -r $(BUILDDIR)/html /tmp/gh-pages
+        @git checkout gh-pages
+        @rm -rf *
+        @cp -r /tmp/gh-pages/* .
+        @touch .nojekyll
+
+这个镜像包含了　``TexLive``　，排版系统的工具就比较完备了，还有一个 ``uml`` 作图工具叫 ``plantuml``。
+接下来会升级我们的排版系统使其包含plantuml。
+

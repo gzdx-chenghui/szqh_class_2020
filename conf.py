@@ -35,9 +35,11 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.mathjax',
     'sphinx.ext.autodoc',
+    'sphinx.ext.graphviz',
     'sphinxcontrib.tikz',
     'recommonmark',
-    'sphinx_rtd_theme'
+    'sphinx_rtd_theme',
+    'sphinxcontrib.plantuml'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -64,6 +66,7 @@ exclude_patterns =  ['_build'
                     ,'docs/typesetting/latex.rst'
                     ,'docs/typesetting/markdown.rst'
                     ,'docs/typesetting/sphinx.rst'
+                    ,'docs/diary/2020/03/20200309.rst'
                     ]
 
 # -- Options for HTML output -------------------------------------------------
@@ -87,5 +90,7 @@ html_theme_options = {
 html_css_files = {
     'css/custom.css',
 }
+
+plantuml = 'java -Djava.awt.headless=true -jar /opt/plantuml/plantuml.jar'
 
 # -- Extension configuration -------------------------------------------------

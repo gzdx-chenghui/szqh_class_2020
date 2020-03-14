@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+    ubuntu:
+        build:
+            context: ../../base/ubuntu
+            cache_from:
+                - ubuntu:szqh
+        image: ubuntu:szqh
+        #environment: 
+        #    - http_proxy=http://localhost:3142/
+        #    - https_proxy=http://localhost:3142/
+        #networks: 
+        #    - apt_cacher_gateway
+
+    plantuml:
+        build: 
+            context: ../plantuml
+            cache_from:
+                - ubuntu:szqh
+                - plantuml:szqh
+        image: plantuml:szqh
+
+    sphinx:
+        build:
+            context: ./base
+            cache_from:
+                - sphinx:szqh
+        image: sphinx:szqh
+
+    texlive:
+        build:
+            context: ./texlive
+            cache_from:
+                - sphinx:szqh
+                - texlive:szqh
+        image: texlive:szqh
+
+    sphinx_plantuml:
+        build:
+            context: ./plantuml
+            cache_from:
+                - sphinx:szqh
+                - sphinx:plantuml
+        image: sphinx:plantuml
+        
+    texlive_plantuml:
+        build:
+            context: ./texlive_plantuml
+            cache_from:
+                - sphinx:szqh
+                - texlive:szqh
+                - sphinx:plantuml
+                - texlive:plantuml
+        image: texlive:plantuml
+        
+#networks: 
+#    apt_cacher_gateway:
+#        external: true
+    

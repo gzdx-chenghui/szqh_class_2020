@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to 量化投资学习项目's documentation!
+量化投资学习项目
 ============================================
 
 .. toctree::
@@ -16,9 +16,15 @@ Welcome to 量化投资学习项目's documentation!
    docs/books/python/python
    docs/books/ml/ml
    docs/projects/projects
-   docs/diary/diary
 
    docs/references
+
+.. toctree::
+   :maxdepth: 2
+   :numbered:
+   :caption: 日记
+
+   docs/diary/2020/diary202003
 
 索引与图表
 ==================

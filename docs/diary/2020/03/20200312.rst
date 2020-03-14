@@ -1,0 +1,102 @@
+2020.3.12 Plantuml
++++++++++++++++++++++++
+
+PlantUML 的参考资料都在　[PlantUML]_　里，用法简单也非常好用。学习PlantUML主要注重两个方面，
+
+* 不同模块的使用，比如时序图，类图，组件图，状态机图，应用场景图等 [PlantUML]_。
+* 图的渲染 [PlantUMLStyle]_。
+
+看一个简单的plantuml案例：
+
+.. uml::
+
+    @startuml
+    user -> (use PlantUML)
+
+    note left of user
+        Hello!
+    end note
+    @enduml
+
+再来看看一个设计模式的类图：
+
+.. code-block::
+
+    .. uml::
+
+        @startuml
+        title Builder Pattern
+        skinparam monochrome true
+        skinparam noteFontSize 9
+
+        class Director {
+            -builder: Builder
+            +Construct(): void
+        }
+        note left of Director::Construct()
+        this.builder.buildePart1()
+        this.builder.buildePartx()
+        end note
+
+        abstract class Builder {
+            +BuildPart1(): void
+            +BuildPartx(): void
+            +GetProduct(): Product
+        }
+
+        class ConcreteBuilder {
+            +BuildPart1(): void
+            +BuildPartx(): void
+            +GetProduct(): Product
+        }
+
+        Director o- Builder
+        Builder <|.. ConcreteBuilder
+        Product <. ConcreteBuilder : constructs
+        @enduml
+
+.. uml::
+
+    @startuml
+    title Builder Pattern
+    skinparam monochrome true
+    skinparam noteFontSize 9
+
+    class Director {
+        -builder: Builder
+        +Construct(): void
+    }
+    note left of Director::Construct()
+    this.builder.buildePart1()
+    this.builder.buildePartx()
+    end note
+
+    abstract class Builder {
+        +BuildPart1(): void
+        +BuildPartx(): void
+        +GetProduct(): Product
+    }
+
+    class ConcreteBuilder {
+        +BuildPart1(): void
+        +BuildPartx(): void
+        +GetProduct(): Product
+    }
+
+    Director o- Builder
+    Builder <|.. ConcreteBuilder
+    Product <. ConcreteBuilder : constructs
+    @enduml
+
+我们也可以直接嵌入plantuml文件：
+
+.. code-block::
+
+    .. uml:: command.txt
+
+.. uml:: command.txt
+
+在学习plantuml时，更重要的是了解uml，wiki上的信息就够了。如果想全面了解，可以参考 [UMLRef]_。
+需要注意对象之间的关系与生命周期的作用。
+
+

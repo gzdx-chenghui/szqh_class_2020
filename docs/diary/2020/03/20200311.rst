@@ -1,0 +1,114 @@
+2020.3.11 升级Sphinx Docker: docker-compose, 安装plantuml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+在 ``docker/tools/sphinx`` 下面建立一个 ``docker-compose``　项目，
+
+.. code-block:: docker
+
+    version: '3.7'
+
+    services:
+        sphinx:
+            build:
+                context: ./base
+                cache_from:
+                    - sphinx:szqh
+            image: sphinx:szqh
+
+        texlive:
+            build:
+                context: ./texlive
+                cache_from:
+                    - sphinx:szqh
+                    - texlive:szqh
+            image: texlive:szqh
+
+        sphinx_plantuml:
+            build:
+                context: ./plantuml
+                cache_from:
+                    - sphinx:szqh
+                    - sphinx:plantuml
+            image: sphinx:plantuml
+            
+        texlive_plantuml:
+            build:
+                context: ./texlive_plantuml
+                cache_from:
+                    - sphinx:szqh
+                    - texlive:szqh
+                    - sphinx:plantuml
+                    - texlive:plantuml
+            image: texlive:plantuml
+            
+所有镜像都是基于 ``ubuntu``　，最终需要的是 ``texlive:plantuml`` 这个镜像。由于外网很慢，希望能切换到内网，
+但是如果用　``sphinxdoc`` 所提供的镜像，遇到了很多麻烦，也花了不少时间，最后还是决定从最基础的　``ubuntu``
+做起。
+
+建立镜像的执行命令非常简单，在 ``docker-compose``　所在的目录下（也就是　``docker/tools/sphinx``　），
+
+.. code-block:: shell
+
+    docker-compose build
+
+这样就会建立所有的镜像，由于将 ``apt`` 的镜像切换到内网，也对　``pip3``　做了类似的处理，
+这个指令总共需要不到一个小时的时间完成。主要的时间在前面的几个镜像， ``sphinx::szqh`` 安装了 ``python3``;
+``plantuml:szqh`` 安装了　``openjdk`` ，也就是　``java`` ； ``texlive`` 在　``sphinx:szqh`` 的
+``python3``　基础上加上　``texlive`` （一共３G）。　　``texlive:plantuml`` 综合了所有这些模块。
+由于用了　``cache_from``　，我们看到建立 ``texlive:plantuml``　所用到的时间并不多，大约8分钟。
+相比之下，``plantuml:szqh``　因为要安装　``java``　足足用了半个小时，占了所有时间的一半。
+
+.. code-block:: console
+
+    [zzhang@manjaro-pc-1 szqh_class_2020]$ docker images
+    REPOSITORY                     TAG                 IMAGE ID            CREATED              SIZE
+    texlive                        plantuml            57432a18bab3        About a minute ago   2.55GB
+    sphinx                         plantuml            24901bd8631b        9 minutes ago        954MB
+    texlive                        szqh                34ec109e39d2        14 minutes ago       3.02GB
+    sphinx                         szqh                55614cdfde10        21 minutes ago       749MB
+    plantuml                       szqh                18bb3820149f        26 minutes ago       411MB
+    ubuntu                         szqh                0d1b46bcc50a        54 minutes ago       196MB
+
+
+切换到内网的做法就是更新　``ubuntu``　下的配置文件　``sources.list``:
+
+.. code-block:: dockerfile
+
+    FROM ubuntu:latest
+
+    COPY .ubuntu/sources.list.cn /etc/apt/sources.list
+    RUN apt update -y && apt upgrade -y
+    RUN apt-get update && apt-get upgrade -y
+    RUN apt-get install -y vim
+    RUN apt-get install -y curl wget
+
+其中　``docker/base/ubuntu/.ubuntu/source.list.cn`` 就是更新后的配置文件，
+
+.. code-block::
+
+    deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+
+    deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+    deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+为了能够用plantuml，对　``config.py`` 需要作如下修改： 
+
+* 在 ``extensions`` 里，　加上``sphinxcontrib.plantuml``
+* 加上执行plantuml的指令：
+
+.. code-block:: python3
+
+    plantuml = 'java -Djava.awt.headless=true -jar /opt/plantuml/plantuml.jar'
+
+    
+这样一来，我们的排版系统就比较完善了，sphinx, markdown, latex, tikz, plantuml，graphviz 都有了。

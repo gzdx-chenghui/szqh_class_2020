@@ -1,0 +1,20 @@
+digraph cwbbdot {
+    rankdir=TD
+    node [shape = circle]
+    edge [color = grey; fontsize=8]
+    s0 -> s1 [ label = 财务报表数据收集]
+    s1 -> s0 [ label = 财务报表数据更新]
+    s1 -> s2 [ label = 研究报告收集]
+    s2 -> s3 [ label = 研究报告学习]
+    s0 -> s3
+    s3 -> s0 [ label = 数据需求更新]
+    s3 -> s4 [ label = 护城河模型]
+    s0 -> s4
+    s4 -> s0 [ label = 数据需求更新]
+    s4 -> s5 [ label = 估值模型]
+    s0 -> s5
+    s5 -> s0 [ label = 数据需求更新]
+    s5 -> s6 [ label = 策略开发]
+    s0 -> s6
+    s6 -> s0 [ label = 数据需求更新]
+}

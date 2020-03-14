@@ -1,0 +1,60 @@
+2020.3.10 LateX
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+``LateX``　的功能
+********************
+数学公式：
+
+.. math::
+
+    \nabla^2 f =
+    \frac{1}{r^2} \frac{\partial}{\partial r}
+    \left( r^2 \frac{\partial f}{\partial r} \right) +
+    \frac{1}{r^2 \sin \theta} \frac{\partial f}{\partial \theta}
+    \left(\sin\theta\ \frac{\partial f}{\partial\theta}\right) +
+    \frac{1}{r^2\sin^2\theta}\frac{\partial^2 f}{\partial\phi^2}
+
+
+tikz的功能
+**************
+
+``tikz`` 是在 ``LateX``　里一种强大的绘图语言。
+
+.. tikz:: [>=latex',dotted,thick] \draw[->] (0,0) -- (1,1) -- (1,0) -- (2,0);
+   :libs: arrows
+
+.. tikz:: An Example Directive with Caption
+
+   \draw[thick,rounded corners=8pt]
+   (0,0)--(0,2)--(1,3.25)--(2,2)--(2,0)--(0,2)--(2,2)--(0,0)--(2,0);
+
+.. tikz:: 阴阳图：道生一，一生二
+
+    \begin{scope}
+        \clip (0,0) circle (1cm);
+        \fill[black] (0cm,1cm) rectangle (-1cm,-1cm);
+    \end{scope}
+
+    \fill[black] (0,0.5) circle (0.5cm);
+    \fill[white] (0,-0.5) circle (0.5cm);
+
+    \fill[white] (0,0.5) circle (0.1cm);
+    \fill[black] (0,-0.5) circle (0.1cm);
+
+    \draw (0,0) circle (1cm);
+
+    :libs: scope
+
+``Graphviz``
+*****************
+
+.. graphviz::
+
+    digraph {
+        "a" -> "b"
+    }
+
+.. graphviz:: fsm.dot
+    :name: cwbb
+    :align: center
+    :caption: 护城河项目

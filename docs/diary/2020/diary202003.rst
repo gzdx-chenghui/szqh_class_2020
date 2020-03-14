@@ -1,0 +1,6 @@
+.. toctree::
+   :maxdepth: 2
+   :caption: 2020年3月
+
+   03/diary20200301
+   03/diary20200302

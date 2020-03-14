@@ -1,0 +1,20 @@
+version: '3'
+
+services: 
+    apt_cacher_ng:
+        image: apt_cacher_ng
+        container_name: apt_cacher_ng
+        networks:
+            - gateway
+        ports: 
+            - "3142:3142"
+        volumes: 
+            - apt_cacher_ng:/var/cache/apt_cacher_ng
+        restart: always
+
+volumes:
+    apt_cacher_ng:
+
+networks: 
+    gateway: {}
+
