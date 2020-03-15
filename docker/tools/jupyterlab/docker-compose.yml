@@ -1,10 +1,9 @@
 version: "3"
 
-services: 
-    datascience-notebook:
-        image: jupyter/datascience-notebook
+jupyterlab:
+    extends: 
+        file: ../docker/tools/jupyterlab/docker-compose.yml
+        service: datascience-notebook
         volumes: 
-            - $PWD:/home/jovyan/work
-        ports: 
-            - 8888:8888
-        container_name: datascience
+            - $PWD:/opt/projects
+        container_name: jupyterlab

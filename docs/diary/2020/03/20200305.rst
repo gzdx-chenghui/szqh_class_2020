@@ -82,6 +82,6 @@
         make html
 
 
-#. 渲染 [SphinxTheme]_ ：决定采取 ``sphinx-rtd-theme`` [SphinxRTDTheme]_ 。_
+#. 渲染 [SphinxTheme]_ ：决定采取 ``sphinx-rtd-theme`` [SphinxRTDTheme]_ 。
 
 

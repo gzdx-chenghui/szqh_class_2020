@@ -12,7 +12,11 @@ Docker
 
 .. _Orientation and setup: https://docs.docker.com/get-started/
 .. _Docker Compose: https://docs.docker.com/compose/
+
+.. [DockerSetup:DockerDocs] `Orientation and setup <https://docs.docker.com/get-started/>`__
+.. [DockerCompose:DockerDocs] `Docker Compose <https://docs.docker.com/compose/>`__
 .. [DockerComposeFile:DockerDocs] `Docker Compose Files <https://docs.docker.com/compose/compose-file/>`__
+.. [DockerComposeExtends:DockerDocs] `Share Compose configurations between files and projects <https://docs.docker.com/compose/extends/>`__
 
 Git
 ++++++++
@@ -47,3 +51,12 @@ PlantUML
 
 .. [PlantUML] `PlantUML in a nutshell <https://plantuml.com>`__
 .. [PlantUMLStyle] `PlantUML Style <https://plantuml.com/style-evolution>`__
+
+
+Python
+------------
+
+Jupyter Docker stacks
++++++++++++++++++++++++++++
+
+.. [JupyterDockerStacks] `Jupyter Docker Stacks <https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html>`__

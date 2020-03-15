@@ -10,7 +10,7 @@ Docker
 
 安装
 ++++++
-这里只说明在 ``archlinux`` 中的安装，其他系统可参照 `Orientation and setup`_ 。安装指令非常简单，
+这里只说明在 ``archlinux`` 中的安装，其他系统可参照 [DockerSetup:DockerDocs]_ 。安装指令非常简单，
 
 .. code-block:: bash
 
