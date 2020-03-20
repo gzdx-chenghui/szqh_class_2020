@@ -1,1 +1,2 @@
 redis
+dask_labextension

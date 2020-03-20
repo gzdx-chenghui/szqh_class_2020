@@ -1,9 +1,26 @@
-version: "3"
+version: "3.7"
 
-jupyterlab:
-    extends: 
-        file: ../docker/tools/jupyterlab/docker-compose.yml
-        service: datascience-notebook
-        volumes: 
-            - $PWD:/opt/projects
+services: 
+    jupyterlab:
+        build:
+            context: ./
+        user: root
+        image: jupyterlab:szqh
+        ports:
+            - ${PORT}:8888
+        environment:
+            NB_USER: $USER
+            NB_UID: 1000
+            NB_GID: 100
+            NB_GROUP: users
+            CHOWN_HOME: 'yes'
+            CHOWN_HOME_OPTS: -R
+            GRANT_SUDO: 'yes'
+            JUPYTER_ENABLE_LAB: 'yes'
+        working_dir: /home/$USER/work
+        command: "start-notebook.sh \
+            --NotebookApp.password=${ACCESS_TOKEN}
+            --NotebookApp.keyfile=/etc/ssl/notebook/jupyter.key \
+            --NotebookApp.certfile=/etc/ssl/notebook/jupyter.crt"
         container_name: jupyterlab
+    

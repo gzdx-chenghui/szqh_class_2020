@@ -3,12 +3,3 @@
 
 主要的工具箱是Jupyter Docker Stacks，参考 [JupyterDockerStacks]_。
 
-.. code-block:: console
-
-    ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
-
-.. code-block:: shell
-
-    docker network prune
-
-OpenVPN

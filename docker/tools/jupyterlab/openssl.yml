@@ -8,6 +8,8 @@ services:
         image: jupyterlab:szqh
         ports:
             - ${PORT}:8888
+            - 8787:8787
+            - 8786:8786
         environment:
             NB_USER: $USER
             NB_UID: 1000
@@ -19,7 +21,7 @@ services:
             JUPYTER_ENABLE_LAB: 'yes'
         working_dir: /home/$USER/work
         command: "start-notebook.sh \
-            --NotebookApp.password=${ACCESS_TOKEN}
+            --NotebookApp.password=${ACCESS_TOKEN} \
             --NotebookApp.keyfile=/etc/ssl/notebook/jupyter.key \
             --NotebookApp.certfile=/etc/ssl/notebook/jupyter.crt"
         container_name: jupyterlab

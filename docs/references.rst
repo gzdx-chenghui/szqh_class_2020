@@ -60,3 +60,4 @@ Jupyter Docker stacks
 +++++++++++++++++++++++++++
 
 .. [JupyterDockerStacks] `Jupyter Docker Stacks <https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html>`__
+.. [JupyterServer] `Running a notebook server <https://jupyter-notebook.readthedocs.io/en/stable/public_server.html>`__

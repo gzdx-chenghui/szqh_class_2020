@@ -1,0 +1,10 @@
+version: "3.7"
+
+services: 
+    jupyterlab:
+        volumes:
+            - ${LOCAL_WORKING_DIR}:/home/$USER/work
+            - ${LOCAL_DATASETS}:/home/$USER/work/datasets
+            - ${LOCAL_MODULES}:/home/$USER/work/modules
+            - ${LOCAL_SSL_CERTS}:/etc/ssl/notebook
+    
