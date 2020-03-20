@@ -1,2 +1,3 @@
 redis
+pyecharts
 dask_labextension
