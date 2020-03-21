@@ -16,6 +16,7 @@ pd.set_option('max_colwidth', 200)
 pd.set_option('expand_frame_repr', False)
 
 url = 'https://raw.githubusercontent.com/BlankerL/DXY-2019-nCoV-Data/master/csv/DXYArea.csv'
+#url = '../data/DXYArea.csv'
 df = pd.read_table(url, sep=',')
 
 provinceName = ["上海", "云南", "内蒙古", "北京", "吉林", "四川",
@@ -30,7 +31,7 @@ df.drop(['cityName', 'city_confirmedCount', 'city_suspectedCount',
 df['updateTime'] = pd.to_datetime(df['updateTime'])
 df['updateTime'] = df['updateTime'].apply(
     lambda x: datetime.datetime.strftime(x, '%m-%d'))
-print(df)
+#print(df)
 df['provinceName'] = df['provinceName'].apply(
     lambda y: y[:3] if y == '内蒙古自治区' or y == '黑龙江省' else y[:2])
 
@@ -45,7 +46,7 @@ print(NCP_data.shape)
 
 # 获取日期list
 date_A = []
-dateSeries = NCP_data.iloc[:, 9]
+dateSeries = NCP_data.iloc[:, 11]
 dateSeries.drop_duplicates(inplace=True)
 date = dateSeries.to_list()
 for i in date:
@@ -125,7 +126,7 @@ for i in date:
     criteria = NCP_data['updateTime'] == i
     df = NCP_data[criteria]
     df['percent'] = df['province_confirmedCount'] / confirmed_date[i]
-    print(df.shape)
+    #print(df.shape)
     for index in df.index:
         data.append({'name': df.loc[index, 'provinceName'], 'value': [int(
             df.loc[index, 'province_confirmedCount']), float(df.loc[index, 'percent']),

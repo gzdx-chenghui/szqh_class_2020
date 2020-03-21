@@ -19,7 +19,8 @@ services:
             JUPYTER_ENABLE_LAB: 'yes'
         working_dir: /home/$USER/work
         command: "start-notebook.sh \
-            --NotebookApp.password=${ACCESS_TOKEN}
+            --NotebookApp.password=${ACCESS_TOKEN} \
+            --NotebookApp.iopub_data_rate_limit=100000000 \
             --NotebookApp.keyfile=/etc/ssl/notebook/jupyter.key \
             --NotebookApp.certfile=/etc/ssl/notebook/jupyter.crt"
         container_name: jupyterlab
